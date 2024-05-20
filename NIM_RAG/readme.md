@@ -26,7 +26,7 @@ This project demonstrates the power and simplicity of NVIDIA NIM (NVIDIA Inferen
 
 2. **Set up a conda environment**
 
-    Create a conda environment named `nvidia`:
+    Create a conda environment named `nim_rag`:
 
     ```
     conda create -n nim_rag python=3.10
