@@ -5,7 +5,7 @@
 
 ## Overview
 
-This project demonstrates the power and simplicity of NVIDIA NIM (NVIDIA Inference Model), a suite of optimized cloud-native microservices, by setting up and running a Retrieval-Augmented Generation (RAG) pipeline. NVIDIA NIM is designed to streamline the deployment and time-to-market of generative AI models across various environments, including cloud platforms, data centers, and GPU-accelerated workstations. By abstracting the complexities of AI model development and leveraging industry-standard APIs, NIM makes advanced AI technologies accessible to a broader range of developers.
+This project demonstrates the power and simplicity of NVIDIA NIM (NVIDIA Inference Microservice), a suite of optimized cloud-native microservices, by setting up and running a Retrieval-Augmented Generation (RAG) pipeline. NVIDIA NIM is designed to streamline the deployment and time-to-market of generative AI models across various environments, including cloud platforms, data centers, and GPU-accelerated workstations. By abstracting the complexities of AI model development and leveraging industry-standard APIs, NIM makes advanced AI technologies accessible to a broader range of developers.
 
 ## Getting Started
 
