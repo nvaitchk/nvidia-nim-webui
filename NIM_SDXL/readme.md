@@ -1,4 +1,5 @@
 # Web UI for Stable Diffusion XL NIM (On-Premises Deployment)
+![image](https://github.com/nvaitchk/nvidia-nim-webui/assets/89618410/ae78c8fd-58f6-4bcf-86be-b4e6b6ab0fc2)
 
 ## Overview
 
