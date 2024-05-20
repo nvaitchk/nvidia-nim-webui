@@ -1,4 +1,7 @@
-# RAG using NVIDIA NIM with LangChain
+# Web UI for RAG using NVIDIA NIM with LangChain
+
+![image](https://github.com/nvaitchk/nvidia-nim-webui/assets/89618410/04713976-7dd2-459b-b5c1-ed9bd896a7b1)
+
 
 ## Overview
 
