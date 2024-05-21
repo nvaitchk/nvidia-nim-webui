@@ -18,7 +18,7 @@ This project demonstrates the power and simplicity of NVIDIA NIM (NVIDIA Inferen
 1. **Clone the repository**
 
     ```
-    git clone https://github.com/nvaitchk/nvidia-nim-workshops.git
+    git clone https://github.com/nvaitchk/nvidia-nim-webui.git
     cd NIM_SDXL
     ```
 
