@@ -20,13 +20,11 @@ class func:
         self.images_list=[]
         self.rag_fun = rag_func()
         
-    def generate_response(self, question, creativity, complexity, verbosity, max_tokens, temperature, top_p):
-        model="nemotron_steerlm_8b"
-        labels={"creativity": creativity, "complexity": complexity, "verbosity": verbosity}
+    def generate_response(self, question, max_tokens, temperature, top_p):
         max_tokens = max_tokens
         temperature = temperature
         top_p = top_p
-        response = self.rag_fun.infer_request(question, model, labels, max_tokens, temperature, top_p)
+        response = self.rag_fun.infer_request(question, max_tokens, temperature, top_p)
         return response
 
     def upload_doc(self, url):
@@ -63,7 +61,7 @@ with gr.Blocks(title="NVIDIA RAG NIM UI", theme=theme, css=css, js=js_func_darkm
             image = gr.Image(value="./img/nv_logo.png", label=None, show_label=False, interactive=False, show_download_button=False, elem_classes="logo")
         with gr.Column(scale=8):
             gr.Markdown("""
-            # Nemotron 8B SteerLM
+            # Llama-3-8B-Instruct
             AI models generate responses and outputs based on complex algorithms and machine learning techniques, and those responses or outputs may be inaccurate or indecent. By testing this model, you assume the risk of any harm caused by any response or output of the model. Please do not upload any confidential information or personal data. Your use is logged for security.
             """)
   
@@ -74,14 +72,10 @@ with gr.Blocks(title="NVIDIA RAG NIM UI", theme=theme, css=css, js=js_func_darkm
             """)
             question = gr.Textbox(value="What is NIM?", label="Prompt", placeholder="Write a limmerick about the wonders of GPU computing.", lines=3)
             with gr.Row():
-                max_tokens = gr.Slider(value=1024, minimum=1, maximum=1024, label="Max Tokens", step=1)
+                max_tokens = gr.Slider(value=1024, minimum=1, maximum=2048, label="Max Tokens", step=1)
             with gr.Row():
                 temperature = gr.Slider(value=0.2, minimum=0.1, maximum=1, label="Temperature", step=0.01)
                 top_p = gr.Slider(value=0.7, minimum=0.1, maximum=1, label="Top P", step=0.01)
-            with gr.Row():
-                creativity = gr.Slider(value=3, minimum=0, maximum=9, label="Creativity", step=1)
-                verbosity = gr.Slider(value=3, minimum=0, maximum=9, label="Verbosity", step=1)
-                complexity = gr.Slider(value=3, minimum=0, maximum=9, label="Complexity", step=1)
             btn_run = gr.Button("Run", variant="primary")
 
             url = gr.Textbox(label="Document URL", placeholder="https://developer.nvidia.com/blog/nvidia-nim-offers-optimized-inference-microservices-for-deploying-ai-models-at-scale/", lines=1)
@@ -95,7 +89,7 @@ with gr.Blocks(title="NVIDIA RAG NIM UI", theme=theme, css=css, js=js_func_darkm
 
     # Run Button
     fun = func()
-    btn_run.click(fn=fun.generate_response, queue=True, inputs=[question, creativity, complexity, verbosity, max_tokens, temperature, top_p], outputs=[chatbox])
+    btn_run.click(fn=fun.generate_response, queue=True, inputs=[question, max_tokens, temperature, top_p], outputs=[chatbox])
     btn_upload.click(fn=fun.upload_doc, inputs=[url], outputs=[notice])
     Live=True
 
