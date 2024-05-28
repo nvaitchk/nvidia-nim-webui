@@ -1,6 +1,6 @@
 # Web UI for RAG using NVIDIA NIM with LangChain
 
-![image](https://github.com/nvaitchk/nvidia-nim-webui/assets/89618410/04713976-7dd2-459b-b5c1-ed9bd896a7b1)
+<img width="1120" alt="webui_rag" src="https://github.com/nvaitchk/nvidia-nim-webui/assets/89618410/829524d4-29e7-4e2d-b29a-f0d17bffec46">
 
 
 ## Overview
@@ -13,7 +13,7 @@ This project demonstrates the power and simplicity of NVIDIA NIM (NVIDIA Inferen
 
 - Python 3.10 or higher
 - Anaconda
-- API key from https://catalog.ngc.nvidia.com/orgs/nvidia/teams/ai-foundation/models/nemo-8b-steerlm
+- API key from https://build.nvidia.com/explore/discover#llama3-8b
 
 ### Installation
 
