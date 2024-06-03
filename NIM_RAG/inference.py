@@ -39,7 +39,7 @@ class rag_func:
 
     def init_model_hyde(self):
         # Initialize the ChatNVIDIA model with a specified model version as the model to generate hypothetical documents based on a question
-        model_hyde = ChatNVIDIA(model="ai-llama3-8b")
+        model_hyde = ChatNVIDIA(model="meta/llama3-8b-instruct")
 
         # Define a template for generating hypothetical answers to questions
         hyde_template = [("system", "You are a helpful AI assistant."), ("user", "Generate a one-paragraph hypothetical answer to the below question:{input}")]
@@ -78,7 +78,7 @@ class rag_func:
                                      }
                         )
         elif backend=="NVIDIA AI Endpoint":
-            model_qa = ChatNVIDIA(model="ai-llama3-8b", max_tokens=max_tokens, temperature=temperature, top_p=top_p, seed=seed, stop=stop, kwargs={"frequency_penalty": frequency_penalty, "presence_penalty": presence_penalty})
+            model_qa = ChatNVIDIA(model="meta/llama3-8b-instruct", max_tokens=max_tokens, temperature=temperature, top_p=top_p, seed=seed, stop=stop, kwargs={"frequency_penalty": frequency_penalty, "presence_penalty": presence_penalty})
             
         
 
