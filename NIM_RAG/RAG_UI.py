@@ -84,8 +84,8 @@ with gr.Blocks(title="NVIDIA RAG NIM UI", theme=theme, css=css, js=js_func_darkm
                 temperature = gr.Slider(value=0.2, minimum=0.1, maximum=1, label="Temperature", step=0.01)
                 top_p = gr.Slider(value=0.7, minimum=0.1, maximum=1, label="Top P", step=0.01)
             with gr.Row(visible=False) as nim_extra_params:
-                frequency_penalty = gr.Slider(value=0, minimum=-2, maximum=2, label="Frequency Penalty", step=0.1)
-                presence_penalty = gr.Slider(value=0, minimum=-2, maximum=2, label="Presence Penalty", step=0.1)
+                frequency_penalty = gr.Slider(value=0, minimum=-2, maximum=2, label="Frequency Penalty", step=0.1, visible=True)
+                presence_penalty = gr.Slider(value=0, minimum=-2, maximum=2, label="Presence Penalty", step=0.1, visible=True)
                 
             def update_vis(backend):
                 if backend=="NIM":
