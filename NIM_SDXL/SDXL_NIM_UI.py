@@ -69,7 +69,7 @@ with gr.Blocks(title="NVIDIA SDXL NIM UI", theme=theme, css=css, js=js_func_dark
                 sampler = gr.Radio(["DDIM", "DPM", "LMS", "EulerA"], value="DPM", label="Sampler", scale=6)
                 seed = gr.Number(label="Seed", scale=4, min_width=3)
             with gr.Row():    
-                inference_step = gr.Slider(minimum=5, maximum=100, label="Inference Steps", step=1)
+                inference_step = gr.Slider(minimum=5, maximum=50, label="Inference Steps", step=1)
                 guidance_scale = gr.Slider(minimum=1.5, maximum=9, label="Guidance Scale", step=0.1)
             with gr.Row():
                 address = gr.Textbox(label="Service Address", placeholder="127.0.0.1")
