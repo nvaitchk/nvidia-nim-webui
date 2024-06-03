@@ -20,11 +20,11 @@ class func:
         self.images_list=[]
         self.rag_fun = rag_func()
         
-    def generate_response(self, question, max_tokens, temperature, top_p):
+    def generate_response(self, question, backend, address, port, max_tokens, temperature, top_p, frequency_penalty, presence_penalty):
         max_tokens = max_tokens
         temperature = temperature
         top_p = top_p
-        response = self.rag_fun.infer_request(question, max_tokens, temperature, top_p)
+        response = self.rag_fun.infer_request(question, backend, address, port, max_tokens, temperature, top_p, frequency_penalty, presence_penalty)
         return response
 
     def upload_doc(self, url):
@@ -70,12 +70,34 @@ with gr.Blocks(title="NVIDIA RAG NIM UI", theme=theme, css=css, js=js_func_darkm
             gr.Markdown("""
             # Input
             """)
+            with gr.Row():
+                backend = gr.Radio(["NIM", "NVIDIA AI Endpoint"], value="NVIDIA AI Endpoint", label="LLM Service Backend", scale=6)
+            
+            with gr.Row(visible=False) as address_port:
+                address = gr.Textbox(value="0.0.0.0", label="Service Address", placeholder="0.0.0.0", visible=True)
+                port = gr.Textbox(value="8000", label="Port", placeholder="8000", visible=True)
+
+            
+            
             question = gr.Textbox(value="What is NIM?", label="Prompt", placeholder="Write a limmerick about the wonders of GPU computing.", lines=3)
             with gr.Row():
                 max_tokens = gr.Slider(value=1024, minimum=1, maximum=2048, label="Max Tokens", step=1)
             with gr.Row():
                 temperature = gr.Slider(value=0.2, minimum=0.1, maximum=1, label="Temperature", step=0.01)
                 top_p = gr.Slider(value=0.7, minimum=0.1, maximum=1, label="Top P", step=0.01)
+            with gr.Row() as nim_extra_params:
+                frequency_penalty = gr.Slider(value=0, minimum=-2, maximum=2, label="Frequency Penalty", step=0.1)
+                presence_penalty = gr.Slider(value=0, minimum=-2, maximum=2, label="Presence Penalty", step=0.1)
+            
+            def update_vis(backend):
+                if backend=="NIM":
+                    return [gr.Row(visible=bool(1)), gr.Row(visible=bool(1))]
+                else:
+                    return [gr.Row(visible=bool(0)), gr.Row(visible=bool(0))]
+            backend.change(update_vis, backend, [address_port, nim_extra_params])
+                
+                
+                
             btn_run = gr.Button("Run", variant="primary")
 
             url = gr.Textbox(label="Document URL", placeholder="https://developer.nvidia.com/blog/nvidia-nim-offers-optimized-inference-microservices-for-deploying-ai-models-at-scale/", lines=1)
@@ -89,7 +111,7 @@ with gr.Blocks(title="NVIDIA RAG NIM UI", theme=theme, css=css, js=js_func_darkm
 
     # Run Button
     fun = func()
-    btn_run.click(fn=fun.generate_response, queue=True, inputs=[question, max_tokens, temperature, top_p], outputs=[chatbox])
+    btn_run.click(fn=fun.generate_response, queue=True, inputs=[question, backend, address, port, max_tokens, temperature, top_p, frequency_penalty, presence_penalty], outputs=[chatbox])
     btn_upload.click(fn=fun.upload_doc, inputs=[url], outputs=[notice])
     Live=True
 
