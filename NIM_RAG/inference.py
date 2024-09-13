@@ -39,7 +39,7 @@ class rag_func:
 
     def init_model_hyde(self):
         # Initialize the ChatNVIDIA model with a specified model version as the model to generate hypothetical documents based on a question
-        model_hyde = ChatNVIDIA(model="meta/llama3-8b-instruct")
+        model_hyde = ChatNVIDIA(model="meta/llama-3.1-8b-instruct")
 
         # Define a template for generating hypothetical answers to questions
         hyde_template = [("system", "You are a helpful AI assistant."), ("user", "Generate a one-paragraph hypothetical answer to the below question:{input}")]
