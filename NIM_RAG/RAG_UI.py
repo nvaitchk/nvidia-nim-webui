@@ -61,7 +61,7 @@ with gr.Blocks(title="NVIDIA RAG NIM UI", theme=theme, css=css, js=js_func_darkm
             image = gr.Image(value="./img/nv_logo.png", label=None, show_label=False, interactive=False, show_download_button=False, elem_classes="logo")
         with gr.Column(scale=8):
             gr.Markdown("""
-            # Llama-3-8B-Instruct
+            # Llama-3.1-8B-Instruct
             AI models generate responses and outputs based on complex algorithms and machine learning techniques, and those responses or outputs may be inaccurate or indecent. By testing this model, you assume the risk of any harm caused by any response or output of the model. Please do not upload any confidential information or personal data. Your use is logged for security.
             """)
   
